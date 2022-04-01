@@ -22,6 +22,10 @@ Aplicação Desenvolvida para Disciplina de Empreendedorismo - Mestrado UFSCAR
 - [Expo](https://docs.expo.dev/)
 - [Firebase](https://firebase.google.com/?hl=pt-br)
 
+## 🎨 Design Concept
+
+- [Figma](https://www.figma.com/file/x4u2GOoUGQxGIkpCUa6XHK/DOGGO?node-id=0%3A1)
+
 ## 🔰 Instalação
 
 ```bash
