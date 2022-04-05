@@ -11,7 +11,7 @@ const colors = {
   white: "#F7F5FA",
   gray: "#CCCCCC",
   grayTab: "#C4C4D1",
-  darkGray: "#999999",
+  darkGray: "#737380",
   lightBlack: "#6A6180",
   black: "#32264D",
 };

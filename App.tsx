@@ -1,5 +1,7 @@
 import AppLoading from "expo-app-loading";
 import { Landing } from "./src/screens/Landing";
+import { Login } from "./src/screens/Login";
+
 import {
   useFonts,
   Poppins_600SemiBold,
@@ -16,5 +18,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <Landing />;
+  return <Login />;
 }
