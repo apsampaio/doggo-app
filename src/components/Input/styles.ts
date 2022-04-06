@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 16,
     margin: 0,
-    padding: 0,
+    paddingTop: 4,
     fontFamily: fonts.regular,
   },
 });

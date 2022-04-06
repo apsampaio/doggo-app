@@ -1,6 +1,7 @@
 import AppLoading from "expo-app-loading";
 import { Landing } from "./src/screens/Landing";
 import { Login } from "./src/screens/Login";
+import { RegisterInfo } from "./src/screens/RegisterInfo";
 
 import {
   useFonts,
@@ -18,5 +19,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <Login />;
+  return <RegisterInfo />;
 }

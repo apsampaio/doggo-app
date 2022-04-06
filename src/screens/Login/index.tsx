@@ -34,7 +34,7 @@ const Login: React.FC = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.container}>
+          <ScrollView style={styles.container}>
             <View style={styles.body}>
               <Text style={styles.title}>Fazer login</Text>
               <Input
@@ -58,7 +58,7 @@ const Login: React.FC = () => {
             </View>
 
             <ActionButton color={colors.purple} title="Entrar"></ActionButton>
-          </View>
+          </ScrollView>
         </ScrollView>
       </KeyboardAvoidingView>
     </>
