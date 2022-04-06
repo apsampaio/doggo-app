@@ -22,15 +22,14 @@ const RegisterInfo: React.FC = () => {
         behavior={Platform.OS === "ios" ? "padding" : undefined}
         enabled
       >
-        <ScrollView>
+        <ScrollView
+          style={styles.container}
+          keyboardShouldPersistTaps="handled"
+        >
           <View style={styles.header}>
             <GoBackButton />
           </View>
-          <ScrollView
-            style={styles.container}
-            contentContainerStyle={{ flex: 1 }}
-            keyboardShouldPersistTaps="handled"
-          >
+          <View style={styles.body}>
             <Text style={styles.title}>Criar uma conta</Text>
             <Input
               name="name"
@@ -63,7 +62,7 @@ const RegisterInfo: React.FC = () => {
               title="Próximo"
               style={{ marginTop: 36, alignSelf: "center" }}
             ></ActionButton>
-          </ScrollView>
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </>

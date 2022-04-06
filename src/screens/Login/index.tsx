@@ -23,7 +23,7 @@ const Login: React.FC = () => {
         enabled
       >
         <ScrollView
-          contentContainerStyle={{ flex: 1 }}
+          style={styles.container}
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
@@ -34,31 +34,28 @@ const Login: React.FC = () => {
               </Text>
             </TouchableOpacity>
           </View>
-          <ScrollView style={styles.container}>
-            <View style={styles.body}>
-              <Text style={styles.title}>Fazer login</Text>
-              <Input
-                name="email"
-                placeholder="E-mail"
-                key="email"
-                icon="mail"
-              />
-              <Input
-                name="password"
-                placeholder="Senha"
-                key="password"
-                icon="lock"
-                isSecret
-              />
-              <TouchableOpacity>
-                <Text style={[styles.textSimple, { marginTop: 12 }]}>
-                  Esqueci minha senha
-                </Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.body}>
+            <Text style={styles.title}>Fazer login</Text>
+            <Input name="email" placeholder="E-mail" key="email" icon="mail" />
+            <Input
+              name="password"
+              placeholder="Senha"
+              key="password"
+              icon="lock"
+              isSecret
+            />
+            <TouchableOpacity>
+              <Text style={[styles.textSimple, { marginTop: 12 }]}>
+                Esqueci minha senha
+              </Text>
+            </TouchableOpacity>
+          </View>
 
-            <ActionButton color={colors.purple} title="Entrar"></ActionButton>
-          </ScrollView>
+          <ActionButton
+            color={colors.purple}
+            title="Entrar"
+            style={{ alignSelf: "center" }}
+          />
         </ScrollView>
       </KeyboardAvoidingView>
     </>

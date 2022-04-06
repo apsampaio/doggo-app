@@ -6,9 +6,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.white,
     flex: 1,
-
-    paddingHorizontal: 16,
-    paddingBottom: 24,
   },
 
   header: {
@@ -26,7 +23,7 @@ const styles = StyleSheet.create({
 
   body: {
     paddingHorizontal: 16,
-    paddingBottom: 56,
+    paddingBottom: 16,
     flex: 1,
   },
 
