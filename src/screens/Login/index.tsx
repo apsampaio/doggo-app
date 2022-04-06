@@ -9,6 +9,7 @@ import {
 
 import { ActionButton } from "../../components/ActionButton";
 import { Input } from "../../components/Input";
+import { GoBackButton } from "../../components/GoBackButton";
 
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
@@ -25,7 +26,14 @@ const Login: React.FC = () => {
           contentContainerStyle={{ flex: 1 }}
           keyboardShouldPersistTaps="handled"
         >
-          <View style={styles.header}></View>
+          <View style={styles.header}>
+            <GoBackButton />
+            <TouchableOpacity>
+              <Text style={[styles.textSimple, { color: colors.white }]}>
+                Criar uma conta
+              </Text>
+            </TouchableOpacity>
+          </View>
           <View style={styles.container}>
             <View style={styles.body}>
               <Text style={styles.title}>Fazer login</Text>
@@ -50,9 +58,6 @@ const Login: React.FC = () => {
             </View>
 
             <ActionButton color={colors.purple} title="Entrar"></ActionButton>
-            <TouchableOpacity style={styles.bottomButton}>
-              <Text style={styles.textSimple}>Criar uma conta</Text>
-            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

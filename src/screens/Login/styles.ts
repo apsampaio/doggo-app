@@ -7,13 +7,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     alignItems: "center",
-    paddingBottom: 120,
   },
 
   header: {
     height: 156,
     width: "100%",
     backgroundColor: colors.purple,
+
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+
+    paddingHorizontal: 16,
+    paddingBottom: 16,
   },
 
   body: {
@@ -34,18 +40,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     color: colors.purple,
     fontSize: 16,
-  },
-
-  bottomButton: {
-    position: "absolute",
-    left: 0,
-    bottom: 8,
-    right: 0,
-
-    justifyContent: "center",
-    alignItems: "center",
-
-    flexDirection: "row",
+    height: 24,
   },
 });
 
