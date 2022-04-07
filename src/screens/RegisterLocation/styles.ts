@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { colors } from "../../global/colors";
 import { fonts } from "../../global/fonts";
 
@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
+  search: {
+    flexDirection: "row",
+  },
+
   title: {
     fontFamily: fonts.semiBold,
     fontSize: 24,
@@ -37,11 +41,28 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
 
-  textSimple: {
-    fontFamily: fonts.regular,
-    color: colors.purple,
-    fontSize: 16,
-    height: 24,
+  button: {
+    width: "auto",
+    flex: 1,
+    backgroundColor: colors.green,
+  },
+
+  map: {
+    width: Dimensions.get("window").width - 32,
+    height: 260,
+    backgroundColor: colors.borderGrey,
+  },
+
+  mapBox: {
+    width: "100%",
+    height: 80,
+    backgroundColor: colors.borderGrey,
+
+    borderTopWidth: 1,
+    borderColor: colors.greyTab,
+
+    borderBottomLeftRadius: 4,
+    borderBottomRightRadius: 4,
   },
 });
 

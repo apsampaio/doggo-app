@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, TextInput, TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 
 import { Feather } from "@expo/vector-icons";
 
@@ -11,6 +17,7 @@ interface InputProps {
   placeholder: string;
   isSecret?: boolean;
   icon: keyof typeof Feather.glyphMap;
+  style?: StyleProp<ViewStyle>;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -18,6 +25,7 @@ const Input: React.FC<InputProps> = ({
   icon,
   placeholder,
   isSecret = false,
+  style,
   ...rest
 }) => {
   const [passwordVisible, setPasswordVisible] = useState(isSecret);
@@ -39,15 +47,16 @@ const Input: React.FC<InputProps> = ({
       style={[
         styles.container,
         {
-          borderColor: isFocused ? colors.purple : colors.grayTab,
+          borderColor: isFocused ? colors.purple : colors.greyTab,
         },
+        style,
       ]}
     >
       <View style={styles.icon}>
         <Feather
           name={icon}
           size={24}
-          color={isFocused ? colors.purple : colors.darkGray}
+          color={isFocused ? colors.purple : colors.darkGrey}
         />
       </View>
       <TextInput
@@ -56,7 +65,7 @@ const Input: React.FC<InputProps> = ({
         onBlur={handleBlur}
         placeholder={placeholder}
         secureTextEntry={passwordVisible}
-        placeholderTextColor={colors.darkGray}
+        placeholderTextColor={colors.darkGrey}
       />
       {isSecret && (
         <TouchableOpacity
@@ -64,7 +73,7 @@ const Input: React.FC<InputProps> = ({
           style={styles.secret}
         >
           {passwordVisible ? (
-            <Feather name="eye" size={24} color={colors.darkGray} />
+            <Feather name="eye" size={24} color={colors.darkGrey} />
           ) : (
             <Feather name="eye-off" size={24} color={colors.purple} />
           )}

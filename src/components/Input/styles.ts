@@ -5,9 +5,9 @@ import { fonts } from "../../global/fonts";
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    flex: 1,
     height: 64,
-    borderColor: colors.grayTab,
+    borderColor: colors.borderGrey,
     borderWidth: 2,
     flexDirection: "row",
     alignItems: "center",

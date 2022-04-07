@@ -10,6 +10,7 @@ import {
 import { ActionButton } from "../../components/ActionButton";
 import { Input } from "../../components/Input";
 import { GoBackButton } from "../../components/GoBackButton";
+import { RegisterStep } from "../../components/RegisterStep";
 
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
@@ -27,6 +28,7 @@ const RegisterInfo: React.FC = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
+            <RegisterStep step={1} />
             <GoBackButton />
           </View>
           <View style={styles.body}>
