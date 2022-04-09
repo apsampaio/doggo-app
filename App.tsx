@@ -3,6 +3,7 @@ import { Landing } from "./src/screens/Landing";
 import { Login } from "./src/screens/Login";
 import { RegisterInfo } from "./src/screens/RegisterInfo";
 import { RegisterLocation } from "./src/screens/RegisterLocation";
+import { RegisterComplete } from "./src/screens/RegisterComplete";
 
 import {
   useFonts,
@@ -20,5 +21,5 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <RegisterLocation />;
+  return <RegisterComplete />;
 }

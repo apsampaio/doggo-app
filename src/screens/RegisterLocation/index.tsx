@@ -9,10 +9,9 @@ import {
   Alert,
 } from "react-native";
 
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 import { ActionButton } from "../../components/ActionButton";
-import { Input } from "../../components/Input";
 import { GoBackButton } from "../../components/GoBackButton";
 import { RegisterStep } from "../../components/RegisterStep";
 
@@ -26,10 +25,12 @@ const RegisterLocation: React.FC = () => {
     0, 0,
   ]);
 
-  // const [points, setPoints] = useState<Point[]>([]);
+  const [locationStatus, setLocationStatus] = useState("");
+  const [points, setPoints] = useState<[number, number]>([0, 0]);
 
   async function loadPosition() {
     const { status } = await Location.requestForegroundPermissionsAsync();
+    setLocationStatus(status);
 
     if (status !== "granted") {
       Alert.alert(
@@ -41,15 +42,10 @@ const RegisterLocation: React.FC = () => {
 
     const location = await Location.getCurrentPositionAsync();
 
-    console.log(location);
-
     const { latitude, longitude } = location.coords;
     setInitialPosition([latitude, longitude]);
+    setPoints([latitude, longitude]);
   }
-
-  useEffect(() => {
-    loadPosition();
-  }, []);
 
   return (
     <>
@@ -70,10 +66,11 @@ const RegisterLocation: React.FC = () => {
             <Text style={styles.title}>Sua localização</Text>
 
             <ActionButton
-              color={colors.purple}
+              color={colors.green}
               title="Localizar"
               style={styles.button}
               onPress={loadPosition}
+              disabled={locationStatus === "granted"}
             />
 
             {initialPosition[0] !== 0 ? (
@@ -86,7 +83,14 @@ const RegisterLocation: React.FC = () => {
                   latitudeDelta: 0.014,
                   longitudeDelta: 0.014,
                 }}
-              />
+              >
+                <Marker
+                  coordinate={{
+                    latitude: points[0],
+                    longitude: points[1],
+                  }}
+                />
+              </MapView>
             ) : (
               <View style={styles.map} />
             )}

@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
   button: {
     width: "auto",
     flex: 1,
-    backgroundColor: colors.green,
   },
 
   map: {
