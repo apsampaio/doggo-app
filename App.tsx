@@ -1,25 +1,23 @@
 import AppLoading from "expo-app-loading";
-import { Landing } from "./src/screens/Landing";
-import { Login } from "./src/screens/Login";
-import { RegisterInfo } from "./src/screens/RegisterInfo";
-import { RegisterLocation } from "./src/screens/RegisterLocation";
-import { RegisterComplete } from "./src/screens/RegisterComplete";
+import { Routes } from "./src/routes";
 
 import {
   useFonts,
   Poppins_600SemiBold,
   Poppins_400Regular,
+  Poppins_700Bold,
 } from "@expo-google-fonts/poppins";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_600SemiBold,
+    Poppins_700Bold,
   });
 
   if (!fontsLoaded) {
     return <AppLoading />;
   }
 
-  return <RegisterComplete />;
+  return <Routes />;
 }

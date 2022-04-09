@@ -12,10 +12,14 @@ import { Input } from "../../components/Input";
 import { GoBackButton } from "../../components/GoBackButton";
 import { RegisterStep } from "../../components/RegisterStep";
 
+import { useNavigation } from "@react-navigation/native";
+
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
 
 const RegisterInfo: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -29,7 +33,7 @@ const RegisterInfo: React.FC = () => {
         >
           <View style={styles.header}>
             <RegisterStep step={1} />
-            <GoBackButton />
+            <GoBackButton onPress={() => navigation.goBack()} />
           </View>
           <View style={styles.body}>
             <Text style={styles.title}>Criar uma conta</Text>
@@ -63,7 +67,8 @@ const RegisterInfo: React.FC = () => {
               color={colors.purple}
               title="Próximo"
               style={{ marginTop: 36, alignSelf: "center" }}
-            ></ActionButton>
+              onPress={() => navigation.navigate("RegisterLocation")}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

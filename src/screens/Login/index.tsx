@@ -11,10 +11,14 @@ import { ActionButton } from "../../components/ActionButton";
 import { Input } from "../../components/Input";
 import { GoBackButton } from "../../components/GoBackButton";
 
+import { useNavigation } from "@react-navigation/native";
+
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
 
 const Login: React.FC = () => {
+  const navigation = useNavigation();
+
   return (
     <>
       <KeyboardAvoidingView
@@ -27,8 +31,10 @@ const Login: React.FC = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
-            <GoBackButton />
-            <TouchableOpacity>
+            <GoBackButton onPress={() => navigation.goBack()} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RegisterInfo")}
+            >
               <Text style={[styles.textSimple, { color: colors.white }]}>
                 Criar uma conta
               </Text>
@@ -55,6 +61,7 @@ const Login: React.FC = () => {
             color={colors.purple}
             title="Entrar"
             style={{ alignSelf: "center" }}
+            onPress={() => navigation.navigate("Search")}
           />
         </ScrollView>
       </KeyboardAvoidingView>

@@ -1,4 +1,10 @@
-import { StyleProp, Text, TouchableOpacity, ViewStyle } from "react-native";
+import {
+  StyleProp,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  ViewStyle,
+} from "react-native";
 
 import { styles } from "./styles";
 import { Feather } from "@expo/vector-icons";
@@ -8,9 +14,16 @@ type Props = {
   style?: StyleProp<ViewStyle>;
 };
 
-const GoBackButton: React.FC<Props> = ({ style }) => {
+const GoBackButton: React.FC<Props & TouchableOpacityProps> = ({
+  style,
+  ...rest
+}) => {
   return (
-    <TouchableOpacity style={[styles.container, style]} activeOpacity={0.6}>
+    <TouchableOpacity
+      style={[styles.container, style]}
+      activeOpacity={0.6}
+      {...rest}
+    >
       <Feather name="arrow-left" size={24} color={colors.white} />
       <Text style={styles.title}>Voltar</Text>
     </TouchableOpacity>

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
   mapBox: {
     width: "100%",
-    height: 80,
+    height: 32,
     backgroundColor: colors.borderGrey,
 
     borderTopWidth: 1,

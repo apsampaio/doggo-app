@@ -19,8 +19,11 @@ import { styles } from "./styles";
 import { colors } from "../../global/colors";
 
 import * as Location from "expo-location";
+import { useNavigation } from "@react-navigation/native";
 
 const RegisterLocation: React.FC = () => {
+  const navigation = useNavigation();
+
   const [initialPosition, setInitialPosition] = useState<[number, number]>([
     0, 0,
   ]);
@@ -60,7 +63,7 @@ const RegisterLocation: React.FC = () => {
         >
           <View style={styles.header}>
             <RegisterStep step={2} />
-            <GoBackButton />
+            <GoBackButton onPress={() => navigation.goBack()} />
           </View>
           <View style={styles.body}>
             <Text style={styles.title}>Sua localização</Text>
@@ -100,6 +103,7 @@ const RegisterLocation: React.FC = () => {
               color={colors.purple}
               title="Cadastrar"
               style={{ marginTop: 36, alignSelf: "center" }}
+              onPress={() => navigation.navigate("RegisterComplete")}
             />
           </View>
         </ScrollView>

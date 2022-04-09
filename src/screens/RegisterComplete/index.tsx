@@ -6,7 +6,11 @@ import { ActionButton } from "../../components/ActionButton";
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
 
+import { useNavigation } from "@react-navigation/native";
+
 const RegisterComplete: React.FC = () => {
+  const nav = useNavigation();
+
   return (
     <>
       <View style={styles.container}>
@@ -31,6 +35,7 @@ const RegisterComplete: React.FC = () => {
           title="Voltar para o início"
           textStyle={{ color: colors.purple }}
           style={styles.button}
+          onPress={() => nav.navigate("Login")}
         />
       </View>
     </>
