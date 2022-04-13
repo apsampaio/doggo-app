@@ -10,6 +10,8 @@ import {
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+import { Card } from "../../components/Card";
+
 import { styles } from "./styles";
 import { colors } from "../../global/colors";
 
@@ -28,9 +30,10 @@ const Search: React.FC = () => {
           keyboardShouldPersistTaps="handled"
         >
           <View style={styles.header}>
-            <Text style={styles.title}>
-              DOG<Text style={styles.yellow}>GO</Text>
-            </Text>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title}>DOG</Text>
+              <Text style={styles.yellow}>GO</Text>
+            </View>
             <TouchableOpacity
               style={styles.profile}
               //   onPress={() => navigation.navigate("RegisterInfo")}
@@ -39,7 +42,15 @@ const Search: React.FC = () => {
               <Text style={styles.textSimple}>Perfil</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.body}></View>
+          <View style={styles.body}>
+            <Card
+              address="Av. Paraná, 3925 - Cajuru"
+              city="Sorocaba - SP"
+              image="https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg"
+              name="Galera Animal Petshop"
+              score={5}
+            />
+          </View>
         </ScrollView>
       </KeyboardAvoidingView>
     </>

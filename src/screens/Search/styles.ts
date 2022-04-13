@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 
+  titleContainer: {
+    flexDirection: "row",
+  },
+
   title: {
     fontFamily: fonts.bold,
     fontSize: 48,
