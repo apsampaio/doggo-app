@@ -10,20 +10,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     borderRadius: 8,
 
-    marginTop: 8,
+    marginTop: 16,
   },
 
   background: {
     width: "100%",
     height: 80,
 
-    borderTopLeftRadius: 8,
-    borderTopRightRadius: 8,
+    borderRadius: 8,
   },
 
   body: {
     flexDirection: "row",
     flex: 1,
+  },
+
+  titles: {
+    flex: 3,
   },
 
   rating: {

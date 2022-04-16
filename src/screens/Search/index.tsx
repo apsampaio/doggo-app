@@ -50,6 +50,27 @@ const Search: React.FC = () => {
               name="Galera Animal Petshop"
               score={5}
             />
+            <Card
+              address="Av. Dom Aguirre, 2121 - Santa Rosália"
+              city="Sorocaba - SP"
+              image="https://atacama.ind.br/wp-content/uploads/2016/03/como-montar-um-pet-shop1.jpg"
+              name="Petz"
+              score={4}
+            />
+            <Card
+              address="R. Olávo Bilac, 190 - Vila Santana"
+              city="Sorocaba - SP"
+              image="https://petmaniaoficial.com.br/wp-content/uploads/2021/02/veterinario-em-petshop.jpg"
+              name="Águia de Ouro"
+              score={4}
+            />
+            <Card
+              address="R. Paes de Linhares, 383 - Vila Fiori"
+              city="Sorocaba - SP"
+              image="https://studybreaks.com/wp-content/uploads/2017/12/image-3-e1512589034578.jpg"
+              name="Pet Central"
+              score={4}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

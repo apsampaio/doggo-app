@@ -25,10 +25,16 @@ const Card: React.FC<Props> = ({ address, city, name, image, score }) => {
         }}
       />
       <View style={styles.body}>
-        <View>
-          <Text style={styles.title}>{name}</Text>
-          <Text style={styles.subtitle}>{address}</Text>
-          <Text style={styles.subtitle}>{city}</Text>
+        <View style={styles.titles}>
+          <Text style={styles.title} ellipsizeMode="tail" numberOfLines={1}>
+            {name}
+          </Text>
+          <Text style={styles.subtitle} ellipsizeMode="tail" numberOfLines={1}>
+            {address}
+          </Text>
+          <Text style={styles.subtitle} ellipsizeMode="tail" numberOfLines={1}>
+            {city}
+          </Text>
         </View>
         <View style={styles.rating}>
           <Text style={styles.ratingTitle}>AVALIAÇÃO</Text>
