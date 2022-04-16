@@ -8,16 +8,13 @@ const styles = StyleSheet.create({
     height: 178,
     width: "100%",
     backgroundColor: "#FFF",
-    borderRadius: 8,
-
-    marginTop: 16,
+    borderRadius: 4,
+    marginBottom: 8,
   },
 
   background: {
     width: "100%",
     height: 80,
-
-    borderRadius: 8,
   },
 
   body: {
