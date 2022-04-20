@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  SafeAreaView,
   Platform,
   FlatList,
 } from "react-native";
@@ -19,9 +19,7 @@ import { colors } from "../../global/colors";
 import { Chip } from "../../components/Chip";
 import { useState } from "react";
 
-const Search: React.FC = () => {
-  const navigation = useNavigation();
-
+const Header: React.FC = () => {
   const [filterSelected, setFilterSelected] = useState("");
 
   const handleFilter = (name: string) => {
@@ -33,6 +31,49 @@ const Search: React.FC = () => {
   };
 
   const filters = ["Horário", "Localização", "Avaliação", "Promoção"];
+
+  return (
+    <>
+      <View style={styles.header}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>DOG</Text>
+          <Text style={styles.yellow}>GO</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.profile}
+          //   onPress={() => navigation.navigate("RegisterInfo")}
+        >
+          <FontAwesome5 name="user-alt" size={18} color={colors.orange} />
+          <Text style={styles.textSimple}>Perfil</Text>
+        </TouchableOpacity>
+      </View>
+      <FlatList
+        data={filters}
+        horizontal
+        keyExtractor={(item) => item}
+        showsHorizontalScrollIndicator={false}
+        style={{
+          marginVertical: 16,
+        }}
+        renderItem={({ item, index }) => (
+          <Chip
+            action={handleFilter}
+            name={item}
+            selected={filterSelected === item}
+            key={index}
+          />
+        )}
+      />
+    </>
+  );
+};
+
+const Footer: React.FC = () => {
+  return <View style={styles.footer}></View>;
+};
+const Search: React.FC = () => {
+  const navigation = useNavigation();
+
   const shops = [
     {
       id: "A",
@@ -76,67 +117,25 @@ const Search: React.FC = () => {
   ];
 
   return (
-    <>
-      <KeyboardAvoidingView
-        style={{ flex: 1 }}
-        behavior={Platform.OS === "ios" ? "padding" : undefined}
-        enabled
-      >
-        <ScrollView
-          style={styles.container}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.header}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>DOG</Text>
-              <Text style={styles.yellow}>GO</Text>
-            </View>
-            <TouchableOpacity
-              style={styles.profile}
-              //   onPress={() => navigation.navigate("RegisterInfo")}
-            >
-              <FontAwesome5 name="user-alt" size={18} color={colors.orange} />
-              <Text style={styles.textSimple}>Perfil</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.body}>
-            <FlatList
-              data={filters}
-              horizontal
-              keyExtractor={(item) => item}
-              showsHorizontalScrollIndicator={false}
-              style={{
-                marginVertical: 16,
-              }}
-              renderItem={({ item, index }) => (
-                <Chip
-                  action={handleFilter}
-                  name={item}
-                  selected={filterSelected === item}
-                  key={index}
-                />
-              )}
-            />
-            <FlatList
-              data={shops}
-              keyExtractor={(item) => item.id}
-              showsVerticalScrollIndicator={false}
-              renderItem={({ item, index }) => (
-                <Card
-                  address={item.address}
-                  city={item.city}
-                  image={item.image}
-                  name={item.name}
-                  score={item.score}
-                  key={index}
-                />
-              )}
-            />
-          </View>
-        </ScrollView>
-      </KeyboardAvoidingView>
-    </>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        ListHeaderComponent={Header}
+        ListFooterComponent={Footer}
+        data={shops}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item, index }) => (
+          <Card
+            address={item.address}
+            city={item.city}
+            image={item.image}
+            name={item.name}
+            score={item.score}
+            key={index}
+          />
+        )}
+      />
+    </SafeAreaView>
   );
 };
 

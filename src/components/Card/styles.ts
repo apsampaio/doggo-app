@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 import { colors } from "../../global/colors";
 import { fonts } from "../../global/fonts";
@@ -6,10 +6,12 @@ import { fonts } from "../../global/fonts";
 const styles = StyleSheet.create({
   container: {
     height: 178,
-    width: "100%",
+    width: Dimensions.get("screen").width - 16,
     backgroundColor: "#FFF",
     borderRadius: 4,
     marginBottom: 8,
+
+    alignSelf: "center",
   },
 
   background: {
