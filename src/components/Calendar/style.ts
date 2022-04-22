@@ -4,8 +4,6 @@ import { colors } from "../../global/colors";
 
 const sCalendar = StyleSheet.create({
   day: {
-    width: Dimensions.get("window").width / 7 - 8,
-    height: 48,
     borderRadius: 4,
 
     alignItems: "center",
