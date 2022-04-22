@@ -1,6 +1,7 @@
 import { ScrollView, View, Text, Image } from "react-native";
 
 import { GoBackButton } from "../../components/GoBackButton";
+import { CalendarComponent } from "../../components/Calendar";
 
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -98,6 +99,8 @@ const Agenda: React.FC = () => {
           score={data.score}
           key={data.id}
         />
+        <Text style={styles.title}>Escolha a data</Text>
+        <CalendarComponent />
       </View>
     </ScrollView>
   );
