@@ -4,6 +4,7 @@ import { colors } from "../../global/colors";
 import { styles } from "./styles";
 
 import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
   image: string;
@@ -14,10 +15,16 @@ type Props = {
 };
 
 const Card: React.FC<Props> = ({ address, city, name, image, score }) => {
+  const navigation = useNavigation();
+
   const stars = Array.from(Array(score).keys());
 
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.6}>
+    <TouchableOpacity
+      style={styles.container}
+      activeOpacity={0.6}
+      onPress={() => navigation.navigate("Agenda")}
+    >
       <ImageBackground
         style={styles.background}
         source={{

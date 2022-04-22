@@ -53,7 +53,9 @@ const Header: React.FC = () => {
         keyExtractor={(item) => item}
         showsHorizontalScrollIndicator={false}
         style={{
-          marginVertical: 16,
+          paddingVertical: 16,
+          paddingHorizontal: 8,
+          marginRight: 8,
         }}
         renderItem={({ item, index }) => (
           <Chip
@@ -71,6 +73,7 @@ const Header: React.FC = () => {
 const Footer: React.FC = () => {
   return <View style={styles.footer}></View>;
 };
+
 const Search: React.FC = () => {
   const navigation = useNavigation();
 
