@@ -1,13 +1,17 @@
-import { ScrollView, View, Text, Image } from "react-native";
+import { useState } from "react";
+import { ScrollView, View, Text, Image, FlatList } from "react-native";
 
 import { GoBackButton } from "../../components/GoBackButton";
 import { CalendarComponent } from "../../components/Calendar";
+import { Chip } from "../../components/Chip";
+import { ActionButton } from "../../components/ActionButton";
 
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 
 import { styles, headerStyles } from "./styles";
 import { colors } from "../../global/colors";
+import { fonts } from "../../global/fonts";
 
 type HeaderProps = {
   image: string;
@@ -72,6 +76,107 @@ const Header: React.FC<HeaderProps> = ({
   );
 };
 
+const TimeList: React.FC = () => {
+  const [timeSelected, setTimeSelected] = useState("");
+
+  const handleFilter = (name: string) => {
+    if (timeSelected === name) {
+      setTimeSelected("");
+    } else {
+      setTimeSelected(name);
+    }
+  };
+
+  const morning = ["08:00", "09:00", "11:30"];
+  const afternoon = ["12:00", "13:30", "14:00", "15:00", "17:30"];
+  const evening = ["19:00", "19:30"];
+
+  return (
+    <>
+      <Text style={styles.subtitle}>Manhã</Text>
+      <FlatList
+        data={morning}
+        horizontal
+        keyExtractor={(item) => item}
+        showsHorizontalScrollIndicator={false}
+        style={{
+          marginBottom: 8,
+        }}
+        renderItem={({ item, index }) => (
+          <Chip
+            action={handleFilter}
+            name={item}
+            selected={timeSelected === item}
+            key={index}
+            chipContainer={{
+              width: 55,
+              borderRadius: 4,
+            }}
+            chipText={{
+              fontFamily: fonts.semiBold,
+              fontSize: 14,
+            }}
+          />
+        )}
+      />
+
+      <Text style={styles.subtitle}>Tarde</Text>
+      <FlatList
+        data={afternoon}
+        horizontal
+        keyExtractor={(item) => item}
+        showsHorizontalScrollIndicator={false}
+        style={{
+          marginBottom: 8,
+        }}
+        renderItem={({ item, index }) => (
+          <Chip
+            action={handleFilter}
+            name={item}
+            selected={timeSelected === item}
+            key={index}
+            chipContainer={{
+              width: 55,
+              borderRadius: 4,
+            }}
+            chipText={{
+              fontFamily: fonts.semiBold,
+              fontSize: 14,
+            }}
+          />
+        )}
+      />
+
+      <Text style={styles.subtitle}>Noite</Text>
+      <FlatList
+        data={evening}
+        horizontal
+        keyExtractor={(item) => item}
+        showsHorizontalScrollIndicator={false}
+        style={{
+          marginBottom: 8,
+        }}
+        renderItem={({ item, index }) => (
+          <Chip
+            action={handleFilter}
+            name={item}
+            selected={timeSelected === item}
+            key={index}
+            chipContainer={{
+              width: 55,
+              borderRadius: 4,
+            }}
+            chipText={{
+              fontFamily: fonts.semiBold,
+              fontSize: 14,
+            }}
+          />
+        )}
+      />
+    </>
+  );
+};
+
 const Agenda: React.FC = () => {
   const navigation = useNavigation();
 
@@ -101,6 +206,14 @@ const Agenda: React.FC = () => {
         />
         <Text style={styles.title}>Escolha a data</Text>
         <CalendarComponent />
+        <Text style={styles.title}>Escolha o horário</Text>
+        <TimeList />
+        <Text style={styles.title}>Escolha o Pet</Text>
+        <ActionButton
+          color={colors.green}
+          title="Agendar"
+          style={{ alignSelf: "center" }}
+        />
       </View>
     </ScrollView>
   );

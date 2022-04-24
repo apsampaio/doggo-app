@@ -33,6 +33,13 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
 
+  subtitle: {
+    fontWeight: "700",
+    fontSize: 15,
+    color: colors.black,
+    marginBottom: 4,
+  },
+
   textSimple: {
     fontFamily: fonts.regular,
     color: colors.purple,

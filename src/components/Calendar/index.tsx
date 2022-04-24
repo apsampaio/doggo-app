@@ -22,13 +22,7 @@ type MarkedProps = {
 };
 
 const CalendarComponent: React.FC = () => {
-  const [days, setDays] = useState<MarkedProps>({
-    "2022-04-26": {
-      selected: true,
-      selectedColor: colors.orange,
-      customStyles: { container: sCalendar.day },
-    },
-  });
+  const [days, setDays] = useState<MarkedProps>({});
   const [todayDate, setTodayDate] = useState(() => {
     return format(new Date(), "yyyy-MM-dd");
   });
@@ -75,7 +69,15 @@ const CalendarComponent: React.FC = () => {
         markingType={"custom"}
         hideArrows={true}
         disableMonthChange={true}
-        onDayPress={({ dateString }) => console.log(dateString)}
+        onDayPress={({ dateString }) =>
+          setDays({
+            [dateString]: {
+              selected: true,
+              selectedColor: colors.orange,
+              customStyles: { container: sCalendar.day },
+            },
+          })
+        }
         markedDates={days}
         disableAllTouchEventsForDisabledDays
         theme={{
@@ -84,6 +86,7 @@ const CalendarComponent: React.FC = () => {
           },
           weekVerticalMargin: 2,
           calendarBackground: colors.white,
+
           textSectionTitleColor: colors.black,
           todayTextColor: colors.black,
           dayTextColor: colors.black,

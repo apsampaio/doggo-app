@@ -12,14 +12,14 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "center",
-    
-    marginRight: 8
+
+    marginRight: 8,
   },
 
   title: {
     fontFamily: fonts.regular,
     fontSize: 15,
-    color: colors.grey,
+    color: colors.white,
   },
 });
 
