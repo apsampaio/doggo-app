@@ -230,6 +230,7 @@ const Agenda: React.FC = () => {
           color={colors.green}
           title="Agendar"
           style={{ alignSelf: "center" }}
+          onPress={() => navigation.navigate("AgendaComplete")}
         />
       </View>
     </ScrollView>

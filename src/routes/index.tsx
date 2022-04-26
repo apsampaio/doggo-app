@@ -8,6 +8,7 @@ import { RegisterLocation } from "../screens/RegisterLocation";
 import { RegisterComplete } from "../screens/RegisterComplete";
 import { Search } from "../screens/Search";
 import { Agenda } from "../screens/Agenda";
+import { AgendaComplete } from "../screens/AgendaComplete";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,7 @@ const Routes = () => {
         <Stack.Screen name="RegisterComplete" component={RegisterComplete} />
         <Stack.Screen name="Search" component={Search} />
         <Stack.Screen name="Agenda" component={Agenda} />
+        <Stack.Screen name="AgendaComplete" component={AgendaComplete} />
       </Stack.Navigator>
     </NavigationContainer>
   );
