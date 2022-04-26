@@ -46,6 +46,21 @@ const styles = StyleSheet.create({
     fontSize: 16,
     height: 24,
   },
+
+  selectContainer: {
+    borderRadius: 2,
+    borderWidth: 2,
+    borderColor: colors.purple,
+
+    marginBottom: 32,
+    marginTop: 8,
+  },
+
+  select: {
+    height: 64,
+    width: "100%",
+    backgroundColor: "#FFF",
+  },
 });
 
 const headerStyles = StyleSheet.create({

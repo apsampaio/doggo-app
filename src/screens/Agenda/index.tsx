@@ -12,6 +12,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { styles, headerStyles } from "./styles";
 import { colors } from "../../global/colors";
 import { fonts } from "../../global/fonts";
+import { Picker } from "@react-native-picker/picker";
 
 type HeaderProps = {
   image: string;
@@ -180,6 +181,10 @@ const TimeList: React.FC = () => {
 const Agenda: React.FC = () => {
   const navigation = useNavigation();
 
+  const [selectedDog, setSelectedDog] = useState("");
+
+  const dogs = ["Chico", "Bento", "Preta", "Branca"];
+
   const data = {
     id: "A",
     address: "Av. Paraná, 3925 - Cajuru",
@@ -209,6 +214,18 @@ const Agenda: React.FC = () => {
         <Text style={styles.title}>Escolha o horário</Text>
         <TimeList />
         <Text style={styles.title}>Escolha o Pet</Text>
+        <View style={styles.selectContainer}>
+          <Picker
+            selectedValue={selectedDog}
+            onValueChange={(itemValue) => setSelectedDog(itemValue)}
+            style={styles.select}
+            // mode="dropdown"
+          >
+            {dogs.map((dog, index) => (
+              <Picker.Item label={dog} value={dog} key={index} />
+            ))}
+          </Picker>
+        </View>
         <ActionButton
           color={colors.green}
           title="Agendar"

@@ -1,23 +1,18 @@
-import React, { useCallback, useState } from "react";
-import {
-  TouchableOpacity,
-  Text,
-  TouchableOpacityProps,
-  StyleSheetProperties,
-} from "react-native";
+import React, { useState } from "react";
 import { Calendar, LocaleConfig, DateData } from "react-native-calendars";
-
 import { format, lastDayOfMonth, setDate } from "date-fns";
 
 import { colors } from "../../global/colors";
 
 import sCalendar from "./style";
+import { fonts } from "../../global/fonts";
 
 type MarkedProps = {
   [day: string]: {
     selected: boolean;
     selectedColor: string;
     customStyles: { container: object };
+    [key: string]: any;
   };
 };
 
@@ -75,6 +70,10 @@ const CalendarComponent: React.FC = () => {
               selected: true,
               selectedColor: colors.orange,
               customStyles: { container: sCalendar.day },
+              customTextStyle: {
+                fontFamily: fonts.regular,
+                color: colors.black,
+              },
             },
           })
         }
