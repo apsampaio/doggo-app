@@ -22,6 +22,21 @@ type HeaderProps = {
   score: number;
 };
 
+type AgendaProps = {
+  route: {
+    params: {
+      id: string;
+      address: string;
+      city: string;
+      image: string;
+      name: string;
+      score: number;
+    };
+  };
+};
+
+type Dogs = "Chico" | "Bento" | "Mary" | "invalid";
+
 const Header: React.FC<HeaderProps> = ({
   image,
   name,
@@ -178,21 +193,25 @@ const TimeList: React.FC = () => {
   );
 };
 
-const Agenda: React.FC = () => {
+const Agenda: React.FC<AgendaProps> = ({ route }) => {
   const navigation = useNavigation();
 
-  const [selectedDog, setSelectedDog] = useState("");
+  const [selectedDog, setSelectedDog] = useState<Dogs>("invalid");
 
-  const dogs = ["Chico", "Bento", "Preta", "Branca"];
+  const values = {
+    invalid: "00,00",
+    Chico: "50,00",
+    Bento: "70,00",
+    Mary: "50,00",
+  };
 
-  const data = {
-    id: "A",
-    address: "Av. Paraná, 3925 - Cajuru",
-    city: "Sorocaba - SP",
-    image:
-      "https://www.eurodicas.com.br/wp-content/uploads/2019/01/pet-shop-em-portugal.jpg",
-    name: "Galera Animal Petshop",
-    score: 5,
+  const dogs: Dogs[] = ["Chico", "Bento", "Mary"];
+
+  const data = route.params;
+
+  const handlePetChange = (itemValue: Dogs) => {
+    if (itemValue === "invalid") return;
+    setSelectedDog(itemValue);
   };
 
   return (
@@ -217,14 +236,27 @@ const Agenda: React.FC = () => {
         <View style={styles.selectContainer}>
           <Picker
             selectedValue={selectedDog}
-            onValueChange={(itemValue) => setSelectedDog(itemValue)}
+            onValueChange={handlePetChange}
             style={styles.select}
-            // mode="dropdown"
+            prompt="Pets"
+            mode="dropdown"
           >
+            <Picker.Item
+              label="Selecione um Pet"
+              value="invalid"
+              key="invalid"
+              style={{
+                color: colors.greyTab,
+              }}
+            />
             {dogs.map((dog, index) => (
               <Picker.Item label={dog} value={dog} key={index} />
             ))}
           </Picker>
+        </View>
+        <Text style={styles.title}>Valor</Text>
+        <View style={styles.valueContainer}>
+          <Text style={styles.value}>R$ {values[selectedDog]}</Text>
         </View>
         <ActionButton
           color={colors.green}

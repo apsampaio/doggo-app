@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
     borderRadius: 2,
     borderWidth: 2,
     borderColor: colors.purple,
-
-    marginBottom: 32,
     marginTop: 8,
   },
 
@@ -60,6 +58,26 @@ const styles = StyleSheet.create({
     height: 64,
     width: "100%",
     backgroundColor: "#FFF",
+  },
+
+  valueContainer: {
+    backgroundColor: "#DAF3E5",
+    width: "100%",
+    height: 48,
+
+    alignItems: "center",
+    justifyContent: "center",
+
+    borderRadius: 2,
+
+    marginBottom: 24,
+    marginTop: 8,
+  },
+
+  value: {
+    fontSize: 18,
+    fontFamily: fonts.semiBold,
+    color: "#03B252",
   },
 });
 

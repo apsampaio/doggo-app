@@ -23,7 +23,15 @@ const Card: React.FC<Props> = ({ address, city, name, image, score }) => {
     <TouchableOpacity
       style={styles.container}
       activeOpacity={0.6}
-      onPress={() => navigation.navigate("Agenda")}
+      onPress={() =>
+        navigation.navigate("Agenda", {
+          address,
+          city,
+          name,
+          image,
+          score,
+        })
+      }
     >
       <ImageBackground
         style={styles.background}
