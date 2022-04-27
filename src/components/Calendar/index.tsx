@@ -60,9 +60,9 @@ const CalendarComponent: React.FC = () => {
     <>
       <Calendar
         minDate={handleDate.minDate()}
-        maxDate={handleDate.maxDate()}
+        // maxDate={handleDate.maxDate()}
         markingType={"custom"}
-        hideArrows={true}
+        // hideArrows={true}
         disableMonthChange={true}
         onDayPress={({ dateString }) =>
           setDays({
@@ -93,6 +93,7 @@ const CalendarComponent: React.FC = () => {
           textDisabledColor: colors.grey,
           textMonthFontSize: 16,
           textDayHeaderFontSize: 16,
+          arrowColor: colors.purple,
         }}
       />
     </>
