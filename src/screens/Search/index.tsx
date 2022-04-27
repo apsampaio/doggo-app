@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
   FlatList,
+  ActivityIndicator,
 } from "react-native";
 
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -69,7 +70,11 @@ const Header: React.FC = () => {
 };
 
 const Footer: React.FC = () => {
-  return <View style={styles.footer}></View>;
+  return (
+    <View style={styles.footer}>
+      <ActivityIndicator color={colors.purple} size="large" />
+    </View>
+  );
 };
 
 const Search: React.FC = () => {
