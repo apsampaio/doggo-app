@@ -1,4 +1,5 @@
 import AppLoading from "expo-app-loading";
+import { StatusBar } from "expo-status-bar";
 import { Routes } from "./src/routes";
 
 import {
@@ -19,5 +20,10 @@ export default function App() {
     return <AppLoading />;
   }
 
-  return <Routes />;
+  return (
+    <>
+      <StatusBar translucent />
+      <Routes />
+    </>
+  );
 }

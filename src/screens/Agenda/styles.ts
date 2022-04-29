@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
 
   header: {
-    height: 156,
+    height: 200,
     width: "100%",
     backgroundColor: colors.purple,
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
 
     paddingHorizontal: 16,
-    paddingTop: 40,
+    paddingTop: 70,
   },
 
   body: {

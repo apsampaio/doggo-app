@@ -50,6 +50,9 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width - 32,
     height: 260,
     backgroundColor: colors.borderGrey,
+
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   mapBox: {

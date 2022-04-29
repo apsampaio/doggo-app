@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   Alert,
+  ActivityIndicator,
 } from "react-native";
 
 import MapView, { Marker } from "react-native-maps";
@@ -30,6 +31,7 @@ const RegisterLocation: React.FC = () => {
 
   const [locationStatus, setLocationStatus] = useState("");
   const [points, setPoints] = useState<[number, number]>([0, 0]);
+  const [loading, setLoading] = useState(false);
 
   async function loadPosition() {
     const { status } = await Location.requestForegroundPermissionsAsync();
@@ -43,11 +45,12 @@ const RegisterLocation: React.FC = () => {
       return;
     }
 
+    setLoading(true);
     const location = await Location.getCurrentPositionAsync();
-
     const { latitude, longitude } = location.coords;
     setInitialPosition([latitude, longitude]);
     setPoints([latitude, longitude]);
+    setLoading(false);
   }
 
   return (
@@ -95,7 +98,9 @@ const RegisterLocation: React.FC = () => {
                 />
               </MapView>
             ) : (
-              <View style={styles.map} />
+              <View style={styles.map}>
+                <ActivityIndicator color={colors.purple} size="large" />
+              </View>
             )}
             <View style={styles.mapBox}></View>
 

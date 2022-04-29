@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   footer: {
     width: "100%",
     height: 80,
+    marginTop: 32,
   },
 });
 
