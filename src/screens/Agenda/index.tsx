@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { ScrollView, View, Text, Image, FlatList } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  Image,
+  FlatList,
+  ActionSheetIOS,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
 
 import { GoBackButton } from "../../components/GoBackButton";
 import { CalendarComponent } from "../../components/Calendar";
@@ -214,6 +223,27 @@ const Agenda: React.FC<AgendaProps> = ({ route }) => {
     setSelectedDog(itemValue);
   };
 
+  const openActionSheet = () => {
+    ActionSheetIOS.showActionSheetWithOptions(
+      {
+        options: ["Cancelar", ...dogs],
+        cancelButtonIndex: 0,
+        userInterfaceStyle: "light",
+      },
+      (buttonIndex) => {
+        if (buttonIndex === 0) {
+          setSelectedDog("invalid");
+        } else if (buttonIndex === 1) {
+          setSelectedDog("Chico");
+        } else if (buttonIndex === 2) {
+          setSelectedDog("Bento");
+        } else {
+          setSelectedDog("Mary");
+        }
+      }
+    );
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -233,27 +263,41 @@ const Agenda: React.FC<AgendaProps> = ({ route }) => {
         <Text style={styles.title}>Escolha o horário</Text>
         <TimeList />
         <Text style={styles.title}>Escolha o Pet</Text>
-        <View style={styles.selectContainer}>
-          <Picker
-            selectedValue={selectedDog}
-            onValueChange={handlePetChange}
-            style={styles.select}
-            prompt="Pets"
-            mode="dropdown"
-          >
-            <Picker.Item
-              label="Selecione um Pet"
-              value="invalid"
-              key="invalid"
-              style={{
-                color: colors.greyTab,
-              }}
-            />
-            {dogs.map((dog, index) => (
-              <Picker.Item label={dog} value={dog} key={index} />
-            ))}
-          </Picker>
-        </View>
+        {Platform.OS == "android" ? (
+          <View style={styles.selectContainer}>
+            <Picker
+              selectedValue={selectedDog}
+              onValueChange={handlePetChange}
+              style={styles.select}
+              prompt="Pets"
+              mode="dropdown"
+            >
+              <Picker.Item
+                label="Selecione um Pet"
+                value="invalid"
+                key="invalid"
+                style={{
+                  color: colors.greyTab,
+                }}
+              />
+              {dogs.map((dog, index) => (
+                <Picker.Item label={dog} value={dog} key={index} />
+              ))}
+            </Picker>
+          </View>
+        ) : (
+          <View style={styles.selectContainer}>
+            <TouchableOpacity
+              style={styles.selectTouchable}
+              onPress={openActionSheet}
+            >
+              <Text style={styles.selectTouchableText}>
+                {selectedDog === "invalid" ? "Selecione um Pet" : selectedDog}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
         <Text style={styles.title}>Valor</Text>
         <View style={styles.valueContainer}>
           <Text style={styles.value}>R$ {values[selectedDog]}</Text>

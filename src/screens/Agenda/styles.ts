@@ -60,6 +60,21 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
   },
 
+  selectTouchable: {
+    height: 64,
+    width: "100%",
+    backgroundColor: "#FFF",
+
+    justifyContent: "center",
+    padding: 8,
+  },
+
+  selectTouchableText: {
+    fontFamily: fonts.regular,
+    fontSize: 16,
+    color: colors.black,
+  },
+
   valueContainer: {
     backgroundColor: "#DAF3E5",
     width: "100%",
